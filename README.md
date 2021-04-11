@@ -1,6 +1,6 @@
 화면전환 후 데이터를 가져온 로직
 
-1. Signin Activity
+- Signin Activity
 
 class SignInActivity : AppCompatActivity() {
     
@@ -29,7 +29,7 @@ class SignInActivity : AppCompatActivity() {
     }
     }
     
-2. SignUp Activity
+- SignUp Activity
 
 class SignUpActivity : AppCompatActivity() {
     
