@@ -1,11 +1,14 @@
 package org.sopt.androidseminar
 
 import android.content.Intent
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Toast
+import androidx.activity.result.ActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import org.sopt.androidseminar.databinding.ActivitySignInBinding
 import android.app.Activity
 
@@ -14,6 +17,8 @@ class SignInActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        Log.d("LC", "onCreate")
+        Log.d("LC", "SignIn_onCreate")
         binding=ActivitySignInBinding.inflate(layoutInflater)
         setContentView(binding.root)
         initButtonClickEvent()
