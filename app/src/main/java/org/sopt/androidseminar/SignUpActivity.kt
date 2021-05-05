@@ -14,14 +14,14 @@ class SignUpActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        Log.d("LC", "SignUp_onCreate")
-        binding= ActivitySignUpBinding.inflate(layoutInflater)
+        binding = ActivitySignUpBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        setContentView(R.layout.activity_main)
+
+        initButtonClickEvent()
     }
 
-    private fun initActivityResult() {
-        binding.buttonSignup.setOnClickListener() {
+    private fun initButtonClickEvent() {
+        binding.btnSignUp.setOnClickListener() {
             val signupName = binding.editextSignupName.text
             val signupID = binding.editextSignupId.text
             val signupPwd = binding.editextSignupPwd.text
@@ -37,29 +37,6 @@ class SignUpActivity : AppCompatActivity() {
             }
         }
     }
-    override fun onStart() {
-        super.onStart()
-        Log.d("LC", "SignUp_onStart")
-    }
-    override fun onRestart() {
-        super.onRestart()
-        Log.d("LC", "SignUp_onRestart")
-    }
-    override fun onResume() {
-        super.onResume()
-        Log.d("LC", "SignUp_onResume")
-    }
-    override fun onPause() {
-        super.onPause()
-        Log.d("LC", "SignUp_onPause")
-    }
-    override fun onStop() {
-        super.onStop()
-        Log.d("LC", "SignUp_onStop")
-    }
-    override fun onDestroy() {
-        super.onDestroy()
-        Log.d("LC", "SignUp_onDestroy")
-    }
+
 
 }

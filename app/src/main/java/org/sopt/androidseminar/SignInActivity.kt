@@ -1,28 +1,29 @@
 package org.sopt.androidseminar
 
 import android.content.Intent
-import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.view.View
 import android.widget.Toast
-import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import org.sopt.androidseminar.databinding.ActivitySignInBinding
-import android.app.Activity
 
 class SignInActivity : AppCompatActivity() {
     private lateinit var binding:ActivitySignInBinding
+    private val signUpActivityLauncher = registerForActivityResult(
+        ActivityResultContracts.StartActivityForResult()
+    ){
+
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        Log.d("LC", "onCreate")
-        Log.d("LC", "SignIn_onCreate")
         binding=ActivitySignInBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
         initButtonClickEvent()
     }
+
     private fun initButtonClickEvent(){
         binding.btnLogin.setOnClickListener{
             val userId: String = binding.editextSigninId.text.toString()
@@ -37,6 +38,42 @@ class SignInActivity : AppCompatActivity() {
                 startActivity(intent)
             }
         }
+
+        binding.btnLogin.setOnClickListener{
+            val intent = Intent(this@SignInActivity,SignUpActivity::class.java)
+            signUpActivityLauncher.launch(intent)
+        }
     }
+
+    override fun onStart() {
+        super.onStart()
+        Log.d("LC", "SignIn_onStart")
     }
+
+    override fun onRestart() {
+        super.onRestart()
+        Log.d("LC", "SignIn_onRestart")
+    }
+
+    override fun onResume() {
+        super.onResume()
+        Log.d("LC", "SignIn_onResume")
+    }
+
+    override fun onPause() {
+        super.onPause()
+        Log.d("LC", "SignIn_onPause")
+    }
+
+    override fun onStop() {
+        super.onStop()
+        Log.d("LC", "SignIn_onStop")
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Log.d("LC", "SignIn_onDestroy")
+    }
+
+}
 
