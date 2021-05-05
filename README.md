@@ -62,10 +62,11 @@ class SignUpActivity : AppCompatActivity() {
         }
     }
   
- 생명 주기
- - 에뮬레이터가 실행이 되지 않아서 이 부분은 해결한 뒤에 생명 주기 올리도록 해야할 것 같다.. 
  
  배운 내용
 - 안드로이드에 대해 아예 처음 배워봤는데 어려웠지만 따라가다 보니 전체적인 흐름을 알 것 같다. 코드를 짜고 그것이 어떻게 화면에 보여지는지 알 수 있었던 점이 신기했다. 
     
-    
+<2주차 세미나 과제>
+ ![image](https://user-images.githubusercontent.com/76424700/117106469-df7d8680-adba-11eb-89ae-369b6cca7723.png)
+![image](https://user-images.githubusercontent.com/76424700/117106510-f4f2b080-adba-11eb-95f7-47feadb50edb.png)
+
