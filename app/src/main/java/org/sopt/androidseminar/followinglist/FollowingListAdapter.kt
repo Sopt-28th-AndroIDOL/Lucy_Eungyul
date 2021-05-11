@@ -1,4 +1,4 @@
-package org.sopt.androidseminar
+package org.sopt.androidseminar.followinglist
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -16,7 +16,9 @@ class FollowingListAdapter : RecyclerView.Adapter<FollowingListAdapter.Following
             parent,
             false
         )
-        return FollowingUserViewHolder(binding)
+        return FollowingUserViewHolder(
+            binding
+        )
     }
 
     override fun getItemCount(): Int = userList.size

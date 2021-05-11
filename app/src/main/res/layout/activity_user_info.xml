@@ -4,11 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".UserInfoActivity">
+    tools:context=".followinglist.UserInfoActivity">
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/user_info_fragment"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:background="#EAD2D2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

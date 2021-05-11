@@ -1,4 +1,4 @@
-package org.sopt.androidseminar
+package org.sopt.androidseminar.repository
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -11,9 +11,10 @@ class RepositoryAdapter: RecyclerView.Adapter<RepositoryAdapter.RepositoryViewHo
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): RepositoryAdapter.RepositoryViewHolder {
+    ): RepositoryViewHolder {
         val binding = ItemRepositoryBinding.inflate(LayoutInflater.from(parent.context),parent,false)
-    return RepositoryAdapter.RepositoryViewHolder(binding
+    return RepositoryViewHolder(
+        binding
     )
     }
 

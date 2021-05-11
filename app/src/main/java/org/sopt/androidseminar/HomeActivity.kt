@@ -4,15 +4,20 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import org.sopt.androidseminar.databinding.ActivityHomeBinding
+import org.sopt.androidseminar.followinglist.UserInfoActivity
+import org.sopt.androidseminar.repository.RepositoryAdapter
+import org.sopt.androidseminar.repository.RepositoryInfo
 
 class HomeActivity : AppCompatActivity() {
     private lateinit var binding: ActivityHomeBinding
+
     private lateinit var repositoryAdapter: RepositoryAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
         moreButtonClickEvent()
 
         repositoryAdapter = RepositoryAdapter()
@@ -61,15 +66,16 @@ class HomeActivity : AppCompatActivity() {
             RepositoryInfo(
                 repositoryName = "...",
                 repositoryDescription = "...",
-                repositoryLanguage = "Kotlin"
+                repositoryLanguage = "Kotlin")
             )
-        )
         )
         repositoryAdapter.notifyDataSetChanged()
     }
+
     private fun moreButtonClickEvent(){
         binding.morebtn.setOnClickListener {
-            val intent = Intent(this@HomeActivity,UserInfoActivity::class.java)
+            val intent = Intent(this@HomeActivity,
+                UserInfoActivity::class.java)
             startActivity(intent)
         }
     }

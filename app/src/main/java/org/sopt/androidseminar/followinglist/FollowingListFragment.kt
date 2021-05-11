@@ -1,4 +1,4 @@
-package org.sopt.androidseminar
+package org.sopt.androidseminar.followinglist
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -24,6 +24,7 @@ class FollowingListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         followingListAdapter = FollowingListAdapter()
         binding.userList.adapter = followingListAdapter
         followingListAdapter.userList.addAll(
@@ -38,7 +39,6 @@ class FollowingListFragment : Fragment() {
                 FollowingUserInfo(userName = "cutthebutter")
             )
         )
-
         followingListAdapter.notifyDataSetChanged()
     }
 

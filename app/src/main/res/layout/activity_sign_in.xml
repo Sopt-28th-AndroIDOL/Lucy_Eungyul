@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingHorizontal="25dp"
-    tools:context=".SignInActivity">
+    tools:context=".sign.SignInActivity">
 
     <TextView
         android:id="@+id/textview_signin_id"
@@ -64,32 +64,32 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
         app:layout_constraintEnd_toEndOf="@+id/btn_login"
+        app:layout_constraintHorizontal_bias="0.391"
         app:layout_constraintStart_toStartOf="@+id/btn_login"
         app:layout_constraintTop_toBottomOf="@+id/btn_login">
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView
         android:id="@+id/textview_asksignin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="22dp"
+        android:layout_marginTop="5dp"
         android:gravity="center_horizontal"
         android:text="아이디/비밀번호가 없으신가요?"
-        app:layout_constraintBottom_toBottomOf="@id/signIn_cl"
-        app:layout_constraintStart_toStartOf="@id/signIn_cl"
-        app:layout_constraintTop_toTopOf="@id/signIn_cl" />
+        app:layout_constraintEnd_toStartOf="@+id/TextSignIn"
+        app:layout_constraintHorizontal_bias="0.756"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_login" />
 
-        <TextView
-            android:id="@+id/textview_signin"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:text="회원가입"
-            app:layout_constraintBottom_toBottomOf="@id/signIn_cl"
-            app:layout_constraintEnd_toEndOf="@id/signIn_cl"
-            app:layout_constraintHorizontal_bias="0.8"
-            app:layout_constraintStart_toEndOf="@+id/textview_asksignin"
-            app:layout_constraintTop_toTopOf="@id/signIn_cl"
-            app:layout_constraintVertical_bias="1.0" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:id="@+id/TextSignIn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="72dp"
+        android:text="회원가입"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_login" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
