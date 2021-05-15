@@ -1,4 +1,6 @@
 1. retrofit interface 코드
+
+
 interface SoptService {
     @POST("/login/signin")
     fun postLogin(
@@ -10,6 +12,8 @@ interface SoptService {
 }
   
  2. retrofit interface 구현체 코드
+ 
+ 
  object ServiceCreator {
     private const val BASE_URL = "http://cherishserver.com"
 
@@ -22,6 +26,8 @@ interface SoptService {
 }
 
 3. callback 연결 부분 (SignInActivity)
+
+
 val requestLoginData = RequestLoginData(
                     id = binding.editextSigninId.text.toString(),
                     password = binding.editextSigninPwd.text.toString()
@@ -48,6 +54,8 @@ val requestLoginData = RequestLoginData(
             }
             
  4. callback 연결 부분 (SignUpActivity)
+
+
  private fun signUpButtonClickEvent() {
         binding.btnSignUp.setOnClickListener() {
             val signupName = binding.editextSignupName.text
