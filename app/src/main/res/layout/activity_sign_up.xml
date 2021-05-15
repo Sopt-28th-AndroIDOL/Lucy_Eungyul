@@ -6,18 +6,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingHorizontal="20dp"
-    tools:context=".sign.SignUpActivity">
+    tools:context=".SignUpActivity">
 
     <TextView
         android:id="@+id/textview_signup_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
         android:text="이름"
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.147" />
+        app:layout_constraintVertical_bias="0.132" />
 
     <EditText
         android:id="@+id/editext_signup_name"
@@ -61,17 +62,100 @@
         android:layout_height="wrap_content"
         android:hint="비밀번를 입력해주세요"
         android:inputType="textPassword"
-        app:layout_constraintTop_toBottomOf="@+id/textview_signup_pwd"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textview_signup_pwd" />
 
     <Button
         android:id="@+id/btnSignUp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="356dp"
         android:backgroundTint="@color/purple_700"
         android:text="SIGNUP"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/editext_signup_pwd" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/sex"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="44dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textview_signup_pwd">
+
+        <TextView
+            android:id="@+id/textview_sex"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="성별"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <EditText
+        android:id="@+id/edittext_signup_sex"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="144dp"
+        android:hint="남성은 0, 여성은 1을 입력해주세요 "
+        android:paddingVertical="13dp"
+        android:paddingStart="16dp"
+        android:textSize="15sp"
+        app:layout_constraintTop_toBottomOf="@+id/editext_signup_pwd"
+        tools:layout_editor_absoluteX="20dp" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/phone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/textview_signup_name"
+        app:layout_constraintStart_toStartOf="parent">
+        <TextView
+            android:id="@+id/textview_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="휴대폰번호"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="20dp"/>
+        <EditText
+            android:id="@+id/edittext_phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/textview_phone"
+            android:hint="번호를 입력해주세요 (000-0000-0000)"
+            android:textSize="15sp"
+            android:paddingVertical="13dp"
+            android:paddingStart="16dp"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/birth"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/phone"
+        app:layout_constraintStart_toStartOf="parent">
+        <TextView
+            android:id="@+id/textview_birth"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="생일"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="20dp"/>
+        <EditText
+            android:id="@+id/edittext_birth"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/textview_birth"
+            android:hint="생일을 입력해주세요 (YYYY-MM-DD)"
+            android:textSize="15sp"
+            android:paddingVertical="13dp"
+            android:paddingStart="16dp" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
