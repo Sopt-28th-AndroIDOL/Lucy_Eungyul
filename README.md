@@ -25,11 +25,11 @@
 
 3. callback 연결 부분 (SignInActivity)
 
-        val requestLoginData = RequestLoginData(
-                    id = binding.editextSigninId.text.toString(),
-                    password = binding.editextSigninPwd.text.toString()
-            )
-            val call: retrofit2.Call<RequestResponseLoginData> = ServiceCreator.soptService.postLogin(requestLoginData)
+         val requestLoginData = RequestLoginData(
+                        id = binding.editextSigninId.text.toString(),
+                        password = binding.editextSigninPwd.text.toString()
+                )
+                val call: retrofit2.Call<RequestResponseLoginData> = ServiceCreator.soptService.postLogin(requestLoginData)
                 call. enqueue(object : retrofit2.Callback<RequestResponseLoginData> {
                     override fun onResponse(
                             call: retrofit2.Call<RequestResponseLoginData>,
@@ -38,7 +38,7 @@
                         if (response.isSuccessful) {
                             val data = response.body()?.data
                             Toast.makeText(this@SignInActivity,"로그인 완료", Toast.LENGTH_SHORT).show()
-                            startActivity(toHomeIntent)
+                            startHomeActivity()
                         } else {
 
                         }
@@ -47,39 +47,35 @@
                     override fun onFailure(call: retrofit2.Call<RequestResponseLoginData>, t:Throwable){
                         Log.d("NetworkTest","error:$t")
                     }
-                })
-            }
             
  4. callback 연결 부분 (SignUpActivity)
 
             val requestSignUpData = RequestSignUpData(
-                email = binding.editextSignupId.text.toString(),
-                password = binding.editextSignupPwd.text.toString(),
-                sex = binding.edittextSignupSex.text.toString(),
-                birth = binding.edittextBirth.text.toString(),
-                phone = binding.edittextPhone.text.toString(),
-                nickname = binding.editextSignupName.text.toString()
-            )
+                        email = binding.editextSignupId.text.toString(),
+                        password = binding.editextSignupPwd.text.toString(),
+                        sex = binding.edittextSignupSex.text.toString(),
+                        birth = binding.edittextBirth.text.toString(),
+                        phone = binding.edittextPhone.text.toString(),
+                        nickname = binding.editextSignupName.text.toString()
+                )
 
-            val call: Call<ResponseSignUpData> = ServiceCreator.soptService.postSignUp(requestSignUpData)
-            call.enqueue(object : Callback<ResponseSignUpData>{
-                override fun onResponse(
-                    call: Call<ResponseSignUpData>,
-                    response: Response<ResponseSignUpData>
-                ) {
-                    if (response.isSuccessful){
-                        Toast.makeText(this@SignUpActivity, "회원가입 완료", Toast.LENGTH_SHORT).show()
-                        setResult(Activity.RESULT_OK, toSignInIntent)
-                        finish()
-                    } else{
+                val call: Call<ResponseSignUpData> = ServiceCreator.soptService.postSignUp(requestSignUpData)
+                call.enqueue(object : Callback<ResponseSignUpData>{
+                    override fun onResponse(
+                            call: Call<ResponseSignUpData>,
+                            response: Response<ResponseSignUpData>
+                    ) {
+                        if (response.isSuccessful){
+                            Toast.makeText(this@SignUpActivity, "회원가입 완료", Toast.LENGTH_SHORT).show()
+                            StartSignInActivity()
+                        } else{
 
+                        }
                     }
-                }
 
-                override fun onFailure(call: Call<ResponseSignUpData>, t: Throwable) {
-                    Log.d("NetworkTest", "error:$t")
-                }
-            })
-        }
+                    override fun onFailure(call: Call<ResponseSignUpData>, t: Throwable) {
+                        Log.d("NetworkTest", "error:$t")
+                    }
+                })
     
     5. 배운 내용 
