@@ -1,42 +1,88 @@
 package org.sopt.androidseminar
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
+import org.sopt.androidseminar.api.GithubServiceCreator
+import org.sopt.androidseminar.databinding.ActivityHomeBinding
+import org.sopt.androidseminar.followinglist.UserInfoActivity
+import org.sopt.androidseminar.repository.RepositoryAdapter
+import org.sopt.androidseminar.repository.RepositoryInfo
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class HomeActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityHomeBinding
+
+    private lateinit var repositoryAdapter: RepositoryAdapter
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_home)
-        Log.d("LC", "Home_onStart")
-    }
-    override fun onStart() {
-        super.onStart()
-        Log.d("LC", "Home_onStart")
+        binding = ActivityHomeBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        moreButtonClickEvent()
+
+        repositoryAdapter = RepositoryAdapter()
+        binding.homeRcv.adapter = repositoryAdapter
+        repositoryAdapter.repoList.addAll(listOf<RepositoryInfo>(
+            RepositoryInfo(
+                repositoryName = "Lucy_Eungual",
+                repositoryDescription = "은결",
+                repositoryLanguage = "Kotlin"
+            ),
+            RepositoryInfo(
+                repositoryName = "Semi_Semin",
+                repositoryDescription = "세민",
+                repositoryLanguage = "Kotlin"
+            ),
+            RepositoryInfo(
+                repositoryName = "Joy_Seunghee",
+                repositoryDescription = "승희",
+                repositoryLanguage = "Kotlin"
+            ),
+            RepositoryInfo(
+                repositoryName = "Rimi_Sungrim",
+                repositoryDescription = "성림",
+                repositoryLanguage = "Kotlin"
+            ),
+            RepositoryInfo(
+                repositoryName = "Lucy_Eungual",
+                repositoryDescription = "은결",
+                repositoryLanguage = "Kotlin"
+            ),
+            RepositoryInfo(
+                repositoryName = "Semi_Semin",
+                repositoryDescription = "세민",
+                repositoryLanguage = "Kotlin"
+            ),
+            RepositoryInfo(
+                repositoryName = "Joy_Seunghee",
+                repositoryDescription = "승희",
+                repositoryLanguage = "Kotlin"
+            ),
+            RepositoryInfo(
+                repositoryName = "Rimi_Sungrim",
+                repositoryDescription = "성림",
+                repositoryLanguage = "Kotlin"
+            ),
+            RepositoryInfo(
+                repositoryName = "...",
+                repositoryDescription = "...",
+                repositoryLanguage = "Kotlin")
+            )
+        )
+        repositoryAdapter.notifyDataSetChanged()
     }
 
-    override fun onRestart() {
-        super.onRestart()
-        Log.d("LC", "Home_onRestart")
+
+    private fun moreButtonClickEvent(){
+        binding.morebtn.setOnClickListener {
+            val intent = Intent(this@HomeActivity,
+                UserInfoActivity::class.java)
+            startActivity(intent)
+        }
     }
 
-    override fun onResume() {
-        super.onResume()
-        Log.d("LC", "Home_onResume")
-    }
-
-    override fun onPause() {
-        super.onPause()
-        Log.d("LC", "Home_onPause")
-    }
-
-    override fun onStop() {
-        super.onStop()
-        Log.d("LC", "Home_onStop")
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        Log.d("LC", "Home_onDestroy")
-    }
 }
