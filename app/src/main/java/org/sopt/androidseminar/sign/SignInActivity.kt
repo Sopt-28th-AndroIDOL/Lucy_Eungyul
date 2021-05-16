@@ -5,9 +5,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
+import android.widget.Toast.LENGTH_SHORT
 import androidx.activity.result.contract.ActivityResultContracts
 import org.sopt.androidseminar.HomeActivity
-
 import org.sopt.androidseminar.api.ServiceCreator
 import org.sopt.androidseminar.databinding.ActivitySignInBinding
 import org.sopt.androidseminar.request.RequestLoginData
@@ -32,15 +32,17 @@ class SignInActivity : AppCompatActivity() {
 
     private fun loginButtonClickEvent() {
         binding.btnLogin.setOnClickListener {
-            val userId = binding.editextSigninId.text
-            val userPw = binding.editextSigninPwd.text
+            val userId = binding.edittextId.text
+            val userPw = binding.edittextPw.text
             if (userId.isNullOrBlank() || userPw.isNullOrBlank()) {
                 Toast.makeText(
-                        this@SignInActivity, "아이디/비밀번호를 확인해주세요", Toast.LENGTH_SHORT).show()
+                        this@SignInActivity, "아이디/비밀번호를 확인해주세요", LENGTH_SHORT
+                ).show()
             } else {
+                //로그인 서버 통신
                 val requestLoginData = RequestLoginData(
-                        id = binding.editextSigninId.text.toString(),
-                        password = binding.editextSigninPwd.text.toString()
+                        id = binding.edittextId.text.toString(),
+                        password = binding.edittextPw.text.toString()
                 )
                 val call: retrofit2.Call<RequestResponseLoginData> = ServiceCreator.soptService.postLogin(requestLoginData)
                 call. enqueue(object : retrofit2.Callback<RequestResponseLoginData> {
@@ -50,10 +52,10 @@ class SignInActivity : AppCompatActivity() {
                     ) {
                         if (response.isSuccessful) {
                             val data = response.body()?.data
-                            Toast.makeText(this@SignInActivity,"로그인 완료", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(this@SignInActivity,"로그인 완료", LENGTH_SHORT).show()
                             startHomeActivity()
                         } else {
-
+                            Toast.makeText(this@SignInActivity,"로그인 에러", LENGTH_SHORT).show()
                         }
                     }
 

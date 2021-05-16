@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.content.Intent
 import android.util.Log
 import android.widget.Toast
+import android.widget.Toast.LENGTH_SHORT
 import org.sopt.androidseminar.api.ServiceCreator
 import org.sopt.androidseminar.databinding.ActivitySignUpBinding
 import org.sopt.androidseminar.request.RequestSignUpData
@@ -28,23 +29,24 @@ class SignUpActivity : AppCompatActivity() {
 
     private fun signUpButtonClickEvent() {
         binding.btnSignUp.setOnClickListener() {
-            val signupName = binding.editextSignupName.text
-            val signupID = binding.editextSignupId.text
-            val signupPwd = binding.editextSignupPwd.text
-            val signupSex = binding.edittextSignupSex.text
+            val signupName = binding.edittextNickname.text
+            val signupID = binding.edittextGithubId.text
+            val signupPwd = binding.edittextPw.text
+            val signupSex = binding.edittextSex.text
             val signupPhone = binding.edittextPhone.text
             val signupBirth = binding.edittextBirth.text
             if (signupID.isNullOrBlank() || signupName.isNullOrBlank() || signupPwd.isNullOrBlank() || signupBirth.isNullOrBlank()
                 || signupPhone.isNullOrBlank() || signupSex.isNullOrBlank()) {
-                Toast.makeText(this@SignUpActivity, "빈칸이 있는지 확인해주세요", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@SignUpActivity, "빈칸이 있는지 확인해주세요", LENGTH_SHORT).show()
             } else {
+                //회원가입 서버 통신
                 val requestSignUpData = RequestSignUpData(
-                        email = binding.editextSignupId.text.toString(),
-                        password = binding.editextSignupPwd.text.toString(),
-                        sex = binding.edittextSignupSex.text.toString(),
+                        email = binding.edittextGithubId.text.toString(),
+                        password = binding.edittextPw.text.toString(),
+                        sex = binding.edittextSex.text.toString(),
                         birth = binding.edittextBirth.text.toString(),
                         phone = binding.edittextPhone.text.toString(),
-                        nickname = binding.editextSignupName.text.toString()
+                        nickname = binding.edittextNickname.text.toString()
                 )
 
                 val call: Call<ResponseSignUpData> = ServiceCreator.soptService.postSignUp(requestSignUpData)
@@ -54,10 +56,10 @@ class SignUpActivity : AppCompatActivity() {
                             response: Response<ResponseSignUpData>
                     ) {
                         if (response.isSuccessful){
-                            Toast.makeText(this@SignUpActivity, "회원가입 완료", Toast.LENGTH_SHORT).show()
-                            StartSignInActivity()
+                            Toast.makeText(this@SignUpActivity, "회원가입 완료", LENGTH_SHORT).show()
+                            startSignInActivity()
                         } else{
-
+                            Toast.makeText(this@SignUpActivity,"회원가입 에러", LENGTH_SHORT).show()
                         }
                     }
 
@@ -73,11 +75,11 @@ class SignUpActivity : AppCompatActivity() {
 
     }
 
-    private fun StartSignInActivity(){
+    private fun startSignInActivity(){
         val intent = Intent(this@SignUpActivity, SignInActivity::class.java)
-        intent.putExtra("name",binding.editextSignupName.text.toString())
-        intent.putExtra("id", binding.editextSignupId.text.toString())
-        intent.putExtra("pwd", binding.editextSignupPwd.text.toString())
+        intent.putExtra("name",binding.edittextNickname.text.toString())
+        intent.putExtra("id", binding.edittextGithubId.text.toString())
+        intent.putExtra("pwd", binding.edittextPw.text.toString())
         setResult(Activity.RESULT_OK, intent)
         finish()
     }
