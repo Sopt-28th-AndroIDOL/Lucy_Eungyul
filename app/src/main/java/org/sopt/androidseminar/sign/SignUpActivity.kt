@@ -55,14 +55,14 @@ class SignUpActivity : AppCompatActivity() {
                     ) {
                         if (response.isSuccessful){
                             Toast.makeText(this@SignUpActivity, "회원가입 완료", Toast.LENGTH_SHORT).show()
-                            StartSignInActivity()
+                            startSignInActivity()
                         } else{
 
                         }
                     }
 
                     override fun onFailure(call: Call<ResponseSignUpData>, t: Throwable) {
-                        Log.d("NetworkTest", "error:$t")
+                        Log.d("NetworkFail", "error:$t")
                     }
                 })
 
@@ -73,7 +73,7 @@ class SignUpActivity : AppCompatActivity() {
 
     }
 
-    private fun StartSignInActivity(){
+    private fun startSignInActivity(){
         val intent = Intent(this@SignUpActivity, SignInActivity::class.java)
         intent.putExtra("name",binding.editextSignupName.text.toString())
         intent.putExtra("id", binding.editextSignupId.text.toString())

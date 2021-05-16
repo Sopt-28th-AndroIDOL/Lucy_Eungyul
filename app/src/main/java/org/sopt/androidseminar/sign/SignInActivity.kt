@@ -58,7 +58,7 @@ class SignInActivity : AppCompatActivity() {
                     }
 
                     override fun onFailure(call: retrofit2.Call<RequestResponseLoginData>, t:Throwable){
-                        Log.d("NetworkTest","error:$t")
+                        Log.d("NetworkFail","error:$t")
                     }
                 })
 
