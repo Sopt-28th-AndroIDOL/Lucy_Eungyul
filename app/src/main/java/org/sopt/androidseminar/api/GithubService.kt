@@ -7,7 +7,7 @@ import retrofit2.http.GET
 
 interface GithubService {
     @GET("/users/hongeungual/repos")
-    fun getRepositories(): Call<List<GithubRepositoryInfo>>
+    fun getRepos(): Call<List<GithubRepositoryInfo>>
 
     @GET("/users/hongeungual")
     fun getUser(): Call<GithubUserInfo>

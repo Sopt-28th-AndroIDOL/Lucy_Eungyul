@@ -3,10 +3,14 @@ package org.sopt.androidseminar
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import org.sopt.androidseminar.api.GithubServiceCreator
 import org.sopt.androidseminar.databinding.ActivityHomeBinding
 import org.sopt.androidseminar.followinglist.UserInfoActivity
 import org.sopt.androidseminar.repository.RepositoryAdapter
 import org.sopt.androidseminar.repository.RepositoryInfo
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class HomeActivity : AppCompatActivity() {
     private lateinit var binding: ActivityHomeBinding
@@ -71,6 +75,7 @@ class HomeActivity : AppCompatActivity() {
         )
         repositoryAdapter.notifyDataSetChanged()
     }
+
 
     private fun moreButtonClickEvent(){
         binding.morebtn.setOnClickListener {

@@ -15,7 +15,6 @@ import org.sopt.androidseminar.response.ResponseLoginData as RequestResponseLogi
 
 class SignInActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySignInBinding
-    private val toHomeIntent by lazy {Intent(this@SignInActivity, HomeActivity::class.java)}
     private val signUpActivityLauncher = registerForActivityResult(
             ActivityResultContracts.StartActivityForResult()
     ) {
@@ -28,7 +27,6 @@ class SignInActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         loginButtonClickEvent()
-
         signUpTextClickEvent()
     }
 
@@ -40,15 +38,11 @@ class SignInActivity : AppCompatActivity() {
                 Toast.makeText(
                         this@SignInActivity, "아이디/비밀번호를 확인해주세요", Toast.LENGTH_SHORT).show()
             } else {
-                Toast.makeText(this@SignInActivity, "로그인 성공", Toast.LENGTH_SHORT).show()
-                startActivity(toHomeIntent)
-            }
-
-            val requestLoginData = RequestLoginData(
-                    id = binding.editextSigninId.text.toString(),
-                    password = binding.editextSigninPwd.text.toString()
-            )
-            val call: retrofit2.Call<RequestResponseLoginData> = ServiceCreator.soptService.postLogin(requestLoginData)
+                val requestLoginData = RequestLoginData(
+                        id = binding.editextSigninId.text.toString(),
+                        password = binding.editextSigninPwd.text.toString()
+                )
+                val call: retrofit2.Call<RequestResponseLoginData> = ServiceCreator.soptService.postLogin(requestLoginData)
                 call. enqueue(object : retrofit2.Callback<RequestResponseLoginData> {
                     override fun onResponse(
                             call: retrofit2.Call<RequestResponseLoginData>,
@@ -57,7 +51,7 @@ class SignInActivity : AppCompatActivity() {
                         if (response.isSuccessful) {
                             val data = response.body()?.data
                             Toast.makeText(this@SignInActivity,"로그인 완료", Toast.LENGTH_SHORT).show()
-                            startActivity(toHomeIntent)
+                            startHomeActivity()
                         } else {
 
                         }
@@ -67,9 +61,17 @@ class SignInActivity : AppCompatActivity() {
                         Log.d("NetworkTest","error:$t")
                     }
                 })
+
+            }
+
             }
 
         }
+
+    private fun startHomeActivity(){
+        val intent = Intent(this, HomeActivity::class.java)
+        startActivity(intent)
+    }
 
 
     private fun signUpTextClickEvent() {
