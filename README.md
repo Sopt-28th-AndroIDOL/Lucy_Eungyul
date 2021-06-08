@@ -56,7 +56,7 @@
             finish()
         }
         
- LV1-2 구현한 SharedPreference 코드 
+ # LV1-2 구현한 SharedPreference 코드 
  
     object SoptUserAuthStorage {
     private const val STORAGE_KEY = "user_auth"
@@ -114,5 +114,5 @@
     fun UserData(context: Context) = getUserId(context).isNotEmpty() && getUserPw(context).isNotEmpty()
 }
 
-- 배운 내용: 
+# 배운 내용: 
 sharedPreference를 사용하는 방법에 대해서 배울 수 있었고, 확장 함수에 대해 알게 된게 신기했다. clean code가 뭔지 알게 된 거 같다. 하지만 남발하면 안된다는 것... 
