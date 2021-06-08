@@ -44,25 +44,6 @@ object SoptUserAuthStorage {
             .apply()
     }
 
-    fun removeUserId(context: Context){
-        val sharedPreferences = context.getSharedPreferences(
-            "${context.packageName}.$STORAGE_KEY",
-            Context.MODE_PRIVATE
-        )
-        sharedPreferences.edit()
-            .remove(USER_ID_KEY)
-            .apply()
-    }
-
-    fun removeUserPw(context: Context){
-        val sharedPreferences = context.getSharedPreferences(
-            "${context.packageName}.$STORAGE_KEY",
-            Context.MODE_PRIVATE
-        )
-        sharedPreferences.edit()
-            .remove(USER_PW_KEY)
-            .apply()
-    }
 
     fun clearAuthStorage(context: Context){
         val sharedPreferences = context.getSharedPreferences(
