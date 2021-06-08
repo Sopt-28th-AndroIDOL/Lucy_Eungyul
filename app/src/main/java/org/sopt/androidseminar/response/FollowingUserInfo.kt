@@ -1,4 +1,4 @@
-package org.sopt.androidseminar.followinglist
+package org.sopt.androidseminar.response
 
 data class FollowingUserInfo(val userName: String)
 

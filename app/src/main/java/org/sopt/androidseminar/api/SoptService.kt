@@ -9,10 +9,12 @@ import retrofit2.http.Body
 import retrofit2.http.POST
 
 interface SoptService {
-    @POST("/login/signin")
+    @POST("/login/signin") //signin
     fun postLogin(
         @Body body: RequestLoginData
     ): Call<ResponseLoginData>
+
+    @POST("/login/signup") //signup
     fun postSignUp(
         @Body body: RequestSignUpData
     ): Call<ResponseSignUpData>

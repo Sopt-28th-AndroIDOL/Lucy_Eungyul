@@ -1,9 +1,10 @@
-package org.sopt.androidseminar.followinglist
+package org.sopt.androidseminar.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import org.sopt.androidseminar.R
 import org.sopt.androidseminar.databinding.ActivityUserInfoBinding
+import org.sopt.androidseminar.ui.FollowingListFragment
 
 class UserInfoActivity : AppCompatActivity() {
 

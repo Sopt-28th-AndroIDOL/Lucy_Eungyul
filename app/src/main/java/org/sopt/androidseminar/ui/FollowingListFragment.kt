@@ -1,11 +1,13 @@
-package org.sopt.androidseminar.followinglist
+package org.sopt.androidseminar.ui
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import org.sopt.androidseminar.adapter.FollowingListAdapter
 import org.sopt.androidseminar.databinding.FragmentFollowingListBinding
+import org.sopt.androidseminar.response.FollowingUserInfo
 
 class FollowingListFragment : Fragment() {
     private var _binding: FragmentFollowingListBinding? = null

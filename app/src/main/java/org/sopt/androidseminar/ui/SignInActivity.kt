@@ -1,4 +1,5 @@
-package org.sopt.androidseminar.sign
+package org.sopt.androidseminar.ui
+
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -7,7 +8,7 @@ import android.util.Log
 import android.widget.Toast
 import android.widget.Toast.LENGTH_SHORT
 import androidx.activity.result.contract.ActivityResultContracts
-import org.sopt.androidseminar.HomeActivity
+import org.sopt.androidseminar.response.SoptUserAuthStorage
 import org.sopt.androidseminar.api.ServiceCreator
 import org.sopt.androidseminar.databinding.ActivitySignInBinding
 import org.sopt.androidseminar.request.RequestLoginData
@@ -18,17 +19,42 @@ class SignInActivity : AppCompatActivity() {
     private val signUpActivityLauncher = registerForActivityResult(
             ActivityResultContracts.StartActivityForResult()
     ) {
-
+        binding.edittextId.setText(it.data?.getStringExtra("id"))
+        binding.edittextPw.setText(it.data?.getStringExtra("password"))
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySignInBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        if(SoptUserAuthStorage.hasUserData(this)){
+            startHomeActivity()
+            finish()
+        }
 
         loginButtonClickEvent()
         signUpTextClickEvent()
+        searchUserAuthStorage()
     }
+
+    private fun requestLoginData(requestLoginData: RequestLoginData) {
+        val call: retrofit2.Call<org.sopt.androidseminar.response.ResponseLoginData> = ServiceCreator.soptService
+            .postLogin(requestLoginData)
+    }
+
+    private fun searchUserAuthStorage() {
+        if (hasUserAuthData()) {
+            requestLoginData(
+                RequestLoginData(
+                    id = SoptUserAuthStorage.getUserId(this),
+                    password = SoptUserAuthStorage.getUserPw(this)
+                )
+            )
+        }
+    }
+
+    private fun hasUserAuthData() = SoptUserAuthStorage.getUserId(this).isNotEmpty() &&
+            SoptUserAuthStorage.getUserPw(this).isNotEmpty()
 
     private fun loginButtonClickEvent() {
         binding.btnLogin.setOnClickListener {
@@ -52,6 +78,12 @@ class SignInActivity : AppCompatActivity() {
                     ) {
                         if (response.isSuccessful) {
                             val data = response.body()?.data
+                            if (!hasUserAuthData()) {
+                                with(binding) {
+                                    SoptUserAuthStorage.savUserId(this@SignInActivity, edittextId.text.toString())
+                                    SoptUserAuthStorage.saveUserPw(this@SignInActivity,edittextPw.text.toString())
+                                }
+                            }
                             Toast.makeText(this@SignInActivity,"로그인 완료", LENGTH_SHORT).show()
                             startHomeActivity()
                         } else {

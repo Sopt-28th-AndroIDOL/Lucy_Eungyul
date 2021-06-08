@@ -1,16 +1,12 @@
-package org.sopt.androidseminar
+package org.sopt.androidseminar.ui
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import org.sopt.androidseminar.api.GithubServiceCreator
 import org.sopt.androidseminar.databinding.ActivityHomeBinding
-import org.sopt.androidseminar.followinglist.UserInfoActivity
-import org.sopt.androidseminar.repository.RepositoryAdapter
-import org.sopt.androidseminar.repository.RepositoryInfo
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import org.sopt.androidseminar.adapter.RepositoryAdapter
+import org.sopt.androidseminar.response.RepositoryInfo
+import org.sopt.androidseminar.response.SoptUserAuthStorage
 
 class HomeActivity : AppCompatActivity() {
     private lateinit var binding: ActivityHomeBinding
@@ -23,6 +19,7 @@ class HomeActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         moreButtonClickEvent()
+        closeButtonClickEvent()
 
         repositoryAdapter = RepositoryAdapter()
         binding.homeRcv.adapter = repositoryAdapter
@@ -82,6 +79,15 @@ class HomeActivity : AppCompatActivity() {
             val intent = Intent(this@HomeActivity,
                 UserInfoActivity::class.java)
             startActivity(intent)
+        }
+    }
+
+    private fun closeButtonClickEvent() {
+        binding.closeImageview.setOnClickListener{
+            SoptUserAuthStorage.clearAuthStorage(this)
+            val intent = Intent(this, SignInActivity::class.java)
+            startActivity(intent)
+            finish()
         }
     }
 

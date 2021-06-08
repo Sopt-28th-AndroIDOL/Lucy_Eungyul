@@ -1,4 +1,4 @@
-package org.sopt.androidseminar.sign
+package org.sopt.androidseminar.ui
 
 import android.app.Activity
 import androidx.appcompat.app.AppCompatActivity
